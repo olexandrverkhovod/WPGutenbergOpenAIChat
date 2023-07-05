@@ -46,6 +46,7 @@ class Custom_Open_AI {
      */
     public function register_open_ai_settings() {
         register_setting( 'custom-open-ai-settings', 'api_key' );
+        register_setting( 'custom-open-ai-settings', 'tokens' );
     }
 
     /**
@@ -73,6 +74,11 @@ class Custom_Open_AI {
                 <tr valign="top">
                     <th scope="row">API Key</th>
                     <td><input type="text" name="api_key" value="<?php echo get_option('api_key'); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row">Maximum length</th>
+                    <td><input type="number" name="tokens" placeholder="150" min="150" max="3000" value="<?php echo get_option('tokens'); ?>" step="1" />&nbsp;tokens<br><br>
+                    <small class="description">One token is roughly 4 characters for normal English text</small></td>
                 </tr>
             </table>
             <?php submit_button(); ?>
@@ -116,12 +122,13 @@ class Custom_Open_AI {
     $prompt = $chat_body.'\n<b>Human:</b> '.$message;
 
     $api_key = get_option('api_key');
+    $tokens = (!empty(get_option('tokens')))?get_option('tokens'):150;
     $url = 'https://api.openai.com/v1/completions';
     $data = array(
     "model"=>"text-davinci-003",
     "prompt"=>$prompt,
     "temperature"=>0.9,
-    "max_tokens"=>150,
+    "max_tokens"=>intval($tokens),
     "top_p"=>1,
     "frequency_penalty"=>0,
     "presence_penalty"=>0.6,
