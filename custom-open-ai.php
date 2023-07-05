@@ -20,6 +20,7 @@ class Custom_Open_AI {
         add_action( 'enqueue_block_editor_assets', array($this, 'block_enqueue_scripts'));
         add_action( 'wp_enqueue_scripts', array($this, 'enqueue_front_scripts_styles'));
 		add_action ('wp_ajax_nopriv_ai_send', array($this, 'open_ai_event_handler'));
+		add_action ('wp_ajax_ai_send', array($this, 'open_ai_event_handler'));
     }
 
     /**
