@@ -1,0 +1,28 @@
+.chat-window{
+    border: 1px solid #8c8f94;
+    min-height: 150px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 15px;
+    color: #8c8f94;
+}
+
+.input-container{
+    margin-bottom:15px;
+}
+
+.input.input-lg {
+    border-color:#8c8f94;
+    width: 100%;
+}
+
+.input-container input[type=submit] {
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
